@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.profile};
-    border-radius: ${theme.borderRadius};
+    border-radius: ${theme.borderRadius.large};
     box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
     width: ${theme.content.width};
 
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 
     img {
       height: 148px;
-      border-radius: ${theme.borderRadius};
+      border-radius: ${theme.borderRadius.large};
     }
   `}
 `

@@ -26,7 +26,7 @@ export const defaultTheme = {
     },
     sizes: {
       xsmall: '0.75rem',
-      small: '0.875',
+      small: '0.875rem',
       medium: '1rem',
       large: '1.125rem',
       xlarge: '1.25rem',
@@ -42,11 +42,15 @@ export const defaultTheme = {
     xlarge: '48px',
     xxlarge: '64px',
   },
-  borderRadius: '10px',
+  borderRadius: {
+    normal: '6px',
+    large: '10px',
+  },
   content: {
     width: '864px',
   },
   grid: {
+    gutter: '72px',
     gutterBottom: '100px',
   },
 }
