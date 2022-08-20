@@ -28,15 +28,15 @@ export function Profile() {
           <footer>
             <div>
               <FaGithub />
-              <span>jrbytes</span>
+              jrbytes
             </div>
             <div>
               <FaBuilding />
-              <span>enterprise</span>
+              enterprise
             </div>
             <div>
               <FaUsers />
-              <span>40 seguidores</span>
+              40 seguidores
             </div>
           </footer>
         </S.Info>

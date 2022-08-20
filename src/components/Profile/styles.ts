@@ -65,6 +65,7 @@ export const Info = styled.div`
         display: flex;
         align-items: center;
         gap: ${theme.spacings.xxsmall};
+        font-size: ${theme.font.sizes.small};
 
         svg {
           color: ${theme.colors.label};
