@@ -15,6 +15,7 @@ export const defaultTheme = {
   font: {
     title: '"Nunito", sans-serif',
     text: '"Nunito", sans-serif',
+    lineHeight: '160%',
     titleWeight: {
       boldOne: 700,
       boldTwo: 800,
@@ -23,25 +24,29 @@ export const defaultTheme = {
       regular: 400,
       bold: 700,
     },
-  },
-  sizes: {
-    xsmall: '0.6rem',
-    small: '0.8rem',
-    medium: '1rem',
-    large: '1.2rem',
-    xlarge: '2.0rem',
-    xxlarge: '3.0rem',
+    sizes: {
+      xsmall: '0.75rem',
+      small: '0.875',
+      medium: '1rem',
+      large: '1.125rem',
+      xlarge: '1.25rem',
+      xxlarge: '1.5rem',
+    },
   },
   spacings: {
-    xsmall: '0.4rem',
-    small: '0.8rem',
-    medium: '1.2rem',
-    large: '1.8rem',
-    xlarge: '2.4rem',
-    xxlarge: '3.0rem',
+    xxsmall: '8px',
+    xsmall: '12px',
+    small: '16px',
+    medium: '24px',
+    large: '32px',
+    xlarge: '48px',
+    xxlarge: '64px',
   },
-  borderRadius: '6px',
+  borderRadius: '10px',
+  content: {
+    width: '864px',
+  },
   grid: {
-    gutterBottom: '8rem',
+    gutterBottom: '100px',
   },
 }

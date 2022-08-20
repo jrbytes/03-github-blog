@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
   h2 {
     ${({ theme }) => css`
       font-family: ${theme.font.title};
-      font-size: ${theme.sizes.xlarge};
+      font-size: ${theme.font.sizes.xlarge};
       font-weight: ${theme.font.titleWeight.boldTwo};
       color: ${theme.colors.subtitle};
     `}
@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
   h3 {
     ${({ theme }) => css`
       font-family: ${theme.font.title};
-      font-size: ${theme.sizes.large};
+      font-size: ${theme.font.sizes.large};
       font-weight: ${theme.font.titleWeight.boldTwo};
       color: ${theme.colors.subtitle};
     `}
