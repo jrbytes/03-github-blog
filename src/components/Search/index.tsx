@@ -1,11 +1,17 @@
 import * as S from './styles'
 
-export function Search() {
+interface SearchProps {
+  issuesLength: number
+}
+
+export function Search({ issuesLength }: SearchProps) {
   return (
     <S.Container>
       <S.Header>
         Publicações
-        <span>4 publicações</span>
+        <span>
+          {issuesLength} {issuesLength === 1 ? 'publicação' : 'publicações'}
+        </span>
       </S.Header>
       <S.Input type="text" placeholder="Buscar conteúdo" />
     </S.Container>

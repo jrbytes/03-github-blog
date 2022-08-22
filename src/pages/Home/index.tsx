@@ -28,7 +28,7 @@ export function Home() {
   return (
     <>
       <Profile />
-      <Search />
+      <Search issuesLength={issues.length} />
       <S.Posts>
         {issues.length > 0
           ? issues.map((issue) => <Card key={issue.title} issue={issue} />)
