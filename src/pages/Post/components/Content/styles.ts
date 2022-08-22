@@ -4,7 +4,7 @@ export const Content = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacings.large};
     width: ${theme.content.width};
-    margin: 0 auto;
+    margin: ${theme.spacings.medium} auto;
 
     display: flex;
     flex-direction: column;
@@ -13,6 +13,19 @@ export const Content = styled.div`
     a {
       color: ${theme.colors.blue};
       text-decoration: none;
+    }
+
+    pre {
+      background-color: ${theme.colors.post};
+      padding: ${theme.spacings.small};
+      border-radius: ${theme.borderRadius.normal};
+    }
+
+    ul {
+      padding-left: ${theme.spacings.medium};
+      li {
+        margin-bottom: ${theme.spacings.small};
+      }
     }
   `}
 `
