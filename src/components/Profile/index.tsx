@@ -1,42 +1,60 @@
+import { useEffect, useState } from 'react'
 import {
   FaBuilding,
   FaExternalLinkAlt,
   FaGithub,
   FaUsers,
 } from 'react-icons/fa'
+import { api } from '../../services/api'
 import * as S from './styles'
 
+type ProfileProps = {
+  avatar_url: string
+  name: string
+  html_url: string
+  bio: string
+  login: string
+  company: string
+  followers: number
+}
+
 export function Profile() {
+  const [profile, setProfile] = useState<ProfileProps>()
+
+  useEffect(() => {
+    async function loadData() {
+      const { data } = await api.get('/users/jrbytes')
+      setProfile(data)
+    }
+    loadData()
+  }, [])
+
   return (
     <S.Container>
       <S.Wrapper>
-        <img src="https://github.com/jrbytes.png" alt="" />
+        <img src={profile?.avatar_url} alt="foto de perfil do github" />
         <S.Info>
           <header>
-            <h4>Jr Bytes</h4>
-            <a
-              href="https://github.com/jrbytes"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <h4>{profile?.name}</h4>
+            <a href={profile?.html_url} target="_blank" rel="noreferrer">
               GITHUB <FaExternalLinkAlt />
             </a>
           </header>
-          <section>
-            Full Stack Developer, passionate about technology and programming.
-          </section>
+          <section>{profile?.bio}</section>
           <footer>
             <div>
               <FaGithub />
-              jrbytes
+              {profile?.login}
             </div>
-            <div>
-              <FaBuilding />
-              enterprise
-            </div>
+            {profile?.company && (
+              <div>
+                <FaBuilding />
+                {profile?.company}
+              </div>
+            )}
             <div>
               <FaUsers />
-              40 seguidores
+              {profile?.followers} seguidores
             </div>
           </footer>
         </S.Info>
