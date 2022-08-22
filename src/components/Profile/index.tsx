@@ -24,7 +24,9 @@ export function Profile() {
   useEffect(() => {
     async function loadData() {
       const { data } = await api.get('/users/jrbytes')
-      setProfile(data)
+      setTimeout(() => {
+        setProfile(data)
+      }, 1000)
     }
     loadData()
   }, [])
@@ -32,32 +34,38 @@ export function Profile() {
   return (
     <S.Container>
       <S.Wrapper>
-        <img src={profile?.avatar_url} alt="foto de perfil do github" />
-        <S.Info>
-          <header>
-            <h4>{profile?.name}</h4>
-            <a href={profile?.html_url} target="_blank" rel="noreferrer">
-              GITHUB <FaExternalLinkAlt />
-            </a>
-          </header>
-          <section>{profile?.bio}</section>
-          <footer>
-            <div>
-              <FaGithub />
-              {profile?.login}
-            </div>
-            {profile?.company && (
-              <div>
-                <FaBuilding />
-                {profile?.company}
-              </div>
-            )}
-            <div>
-              <FaUsers />
-              {profile?.followers} seguidores
-            </div>
-          </footer>
-        </S.Info>
+        {!profile ? (
+          'Carregando...'
+        ) : (
+          <>
+            <img src={profile?.avatar_url} alt="foto de perfil do github" />
+            <S.Info>
+              <header>
+                <h4>{profile?.name}</h4>
+                <a href={profile?.html_url} target="_blank" rel="noreferrer">
+                  GITHUB <FaExternalLinkAlt />
+                </a>
+              </header>
+              <section>{profile?.bio}</section>
+              <footer>
+                <div>
+                  <FaGithub />
+                  {profile?.login}
+                </div>
+                {profile?.company && (
+                  <div>
+                    <FaBuilding />
+                    {profile?.company}
+                  </div>
+                )}
+                <div>
+                  <FaUsers />
+                  {profile?.followers} seguidores
+                </div>
+              </footer>
+            </S.Info>
+          </>
+        )}
       </S.Wrapper>
     </S.Container>
   )
