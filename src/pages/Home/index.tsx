@@ -5,7 +5,8 @@ import { Card } from '../../components/Card'
 import { api } from '../../services/api'
 import * as S from './styles'
 
-type IssuesProps = {
+export type IssuesProps = {
+  number: number
   title: string
   body: string
   comments: number

@@ -24,6 +24,7 @@ export const Header = styled.div`
         align-items: center;
         gap: ${theme.spacings.xxsmall};
         font-size: ${theme.font.sizes.xsmall};
+        cursor: pointer;
       }
 
       a {

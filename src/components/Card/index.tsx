@@ -1,18 +1,18 @@
 import ReactMarkdown from 'react-markdown'
 import { differenceInDays } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 import * as S from './styles'
+import { IssuesProps } from '../../pages/Home'
 
-interface CardProps {
-  issue: {
-    title: string
-    body: string
-    created_at: string
-  }
+export interface CardProps {
+  issue: IssuesProps
 }
 
 export function Card({ issue }: CardProps) {
+  const navigate = useNavigate()
+
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={() => navigate('/post', { state: { issue } })}>
       <header>
         {issue.title}
         <span>

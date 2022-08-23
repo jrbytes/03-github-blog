@@ -19,12 +19,24 @@ export const Content = styled.div`
       background-color: ${theme.colors.post};
       padding: ${theme.spacings.small};
       border-radius: ${theme.borderRadius.normal};
+      font-size: ${theme.font.sizes.small};
     }
 
     ul {
       padding-left: ${theme.spacings.medium};
       li {
         margin-bottom: ${theme.spacings.small};
+      }
+    }
+
+    p {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: 80%;
+        margin: ${theme.spacings.medium} 0;
       }
     }
   `}

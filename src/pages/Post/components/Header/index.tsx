@@ -1,3 +1,5 @@
+import { differenceInDays } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 import {
   FaCalendarDay,
   FaChevronLeft,
@@ -5,13 +7,20 @@ import {
   FaExternalLinkAlt,
   FaGithub,
 } from 'react-icons/fa'
+import { IssuesProps } from '../../../Home'
 import * as S from './styles'
 
-export function Header() {
+interface HeaderProps {
+  issue: IssuesProps
+}
+
+export function Header({ issue }: HeaderProps) {
+  const navigate = useNavigate()
+
   return (
     <S.Header>
       <header>
-        <div>
+        <div onClick={() => navigate(-1)}>
           <FaChevronLeft size={12} />
           VOLTAR
         </div>
@@ -19,7 +28,7 @@ export function Header() {
           VER NO GITHUB <FaExternalLinkAlt />
         </a>
       </header>
-      <h1>JavaScript data types and data structures</h1>
+      <h1>{issue.title}</h1>
       <footer>
         <div>
           <FaGithub />
@@ -27,11 +36,17 @@ export function Header() {
         </div>
         <div>
           <FaCalendarDay />
-          há 1 dia
+          {new Intl.RelativeTimeFormat('pt-BR', {
+            numeric: 'auto',
+            style: 'short',
+          }).format(
+            differenceInDays(new Date(), new Date(issue.created_at)),
+            'day',
+          )}
         </div>
         <div>
           <FaComment />
-          12 comentários
+          {issue.comments} {issue.comments === 1 ? 'comentário' : 'comentários'}
         </div>
       </footer>
     </S.Header>

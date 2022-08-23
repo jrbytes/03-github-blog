@@ -1,22 +1,14 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import * as S from './styles'
 
-export function Content() {
-  const [content, setContent] = useState('')
+interface ContentProps {
+  body: string
+}
 
-  useEffect(() => {
-    async function showMD() {
-      const md = await axios.get('/data/test.md')
-      setContent(md.data)
-    }
-    showMD()
-  }, [])
-
+export function Content({ body }: ContentProps) {
   return (
     <S.Content>
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown>{body}</ReactMarkdown>
     </S.Content>
   )
 }
