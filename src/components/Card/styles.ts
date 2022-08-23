@@ -10,6 +10,13 @@ export const Wrapper = styled.div`
     padding: 32px;
     gap: ${theme.spacings.small};
 
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+    :hover {
+      background-color: ${theme.colors.border};
+    }
+
     header {
       display: grid;
       grid-template-columns: 4fr 2fr;
