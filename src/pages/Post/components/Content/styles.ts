@@ -29,15 +29,10 @@ export const Content = styled.div`
       }
     }
 
-    p {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      img {
-        width: 80%;
-        margin: ${theme.spacings.medium} 0;
-      }
+    img {
+      width: 100%;
+      text-align: center;
+      margin: ${theme.spacings.medium} 0;
     }
   `}
 `
