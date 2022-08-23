@@ -28,6 +28,8 @@ export type IssuesProps = {
 interface GithubContextType {
   profile: ProfileProps | null
   issues: IssuesProps[]
+  searchPosts: (result: string) => void
+  loadIssues: () => void
 }
 
 interface GithubProviderProps {
@@ -39,20 +41,47 @@ export const GithubContext = createContext({} as GithubContextType)
 export function GithubProvider({ children }: GithubProviderProps) {
   const [profile, setProfile] = useState<ProfileProps>({} as ProfileProps)
   const [issues, setIssues] = useState<IssuesProps[]>([])
+  const [searchValue, setSearchValue] = useState('')
 
-  const loadData = useCallback(async () => {
-    const profile = await api.get('/users/jrbytes')
-    setProfile(profile.data)
-    const issues = await api.get('/repos/jrbytes/03-github-blog/issues')
-    setIssues(issues.data)
+  const loadProfile = useCallback(async () => {
+    const { data } = await api.get('/users/jrbytes')
+    setProfile(data)
+  }, [])
+
+  const loadIssues = useCallback(async () => {
+    const { data } = await api.get('/repos/jrbytes/03-github-blog/issues')
+    setIssues(data)
   }, [])
 
   useEffect(() => {
-    loadData()
-  }, [loadData])
+    loadProfile()
+    loadIssues()
+  }, [loadIssues, loadProfile])
+
+  const searchPosts = useCallback(
+    async (result: string) => {
+      const resultLowerCase = result.toLowerCase()
+      const search = issues.filter((issue) =>
+        issue.title.toLowerCase().includes(resultLowerCase),
+      )
+
+      setSearchValue((state) => {
+        if (state.length > result.length) {
+          console.log(searchValue)
+          loadIssues()
+        }
+        return result
+      })
+
+      setIssues(search)
+    },
+    [issues, loadIssues, searchValue],
+  )
 
   return (
-    <GithubContext.Provider value={{ profile, issues }}>
+    <GithubContext.Provider
+      value={{ profile, issues, searchPosts, loadIssues }}
+    >
       {children}
     </GithubContext.Provider>
   )

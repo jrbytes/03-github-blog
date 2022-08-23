@@ -7,23 +7,27 @@ import {
   FaExternalLinkAlt,
   FaGithub,
 } from 'react-icons/fa'
-import { IssuesProps } from '../../../Home'
 import * as S from './styles'
-import { GithubContext } from '../../../../contexts/GithubContext'
-import { useContext } from 'react'
+import { GithubContext, IssuesProps } from '../../../../contexts/GithubContext'
+import { useCallback, useContext } from 'react'
 
 interface HeaderProps {
   issue: IssuesProps
 }
 
 export function Header({ issue }: HeaderProps) {
-  const { profile } = useContext(GithubContext)
+  const { profile, loadIssues } = useContext(GithubContext)
   const navigate = useNavigate()
+
+  const handleGoBack = useCallback(() => {
+    loadIssues()
+    navigate(-1)
+  }, [loadIssues, navigate])
 
   return (
     <S.Header>
       <header>
-        <div onClick={() => navigate(-1)}>
+        <div onClick={handleGoBack}>
           <FaChevronLeft size={12} />
           VOLTAR
         </div>
