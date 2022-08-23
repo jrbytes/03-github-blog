@@ -9,12 +9,15 @@ import {
 } from 'react-icons/fa'
 import { IssuesProps } from '../../../Home'
 import * as S from './styles'
+import { GithubContext } from '../../../../contexts/GithubContext'
+import { useContext } from 'react'
 
 interface HeaderProps {
   issue: IssuesProps
 }
 
 export function Header({ issue }: HeaderProps) {
+  const { profile } = useContext(GithubContext)
   const navigate = useNavigate()
 
   return (
@@ -24,7 +27,7 @@ export function Header({ issue }: HeaderProps) {
           <FaChevronLeft size={12} />
           VOLTAR
         </div>
-        <a href="https://github.com/jrbytes" target="_blank" rel="noreferrer">
+        <a href={profile?.html_url} target="_blank" rel="noreferrer">
           VER NO GITHUB <FaExternalLinkAlt />
         </a>
       </header>
@@ -32,7 +35,7 @@ export function Header({ issue }: HeaderProps) {
       <footer>
         <div>
           <FaGithub />
-          jrbytes
+          {profile?.login}
         </div>
         <div>
           <FaCalendarDay />

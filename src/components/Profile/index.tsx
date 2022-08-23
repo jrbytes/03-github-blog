@@ -1,35 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import {
   FaBuilding,
   FaExternalLinkAlt,
   FaGithub,
   FaUsers,
 } from 'react-icons/fa'
-import { api } from '../../services/api'
+import { GithubContext } from '../../contexts/GithubContext'
 import * as S from './styles'
 
-type ProfileProps = {
-  avatar_url: string
-  name: string
-  html_url: string
-  bio: string
-  login: string
-  company: string
-  followers: number
-}
-
 export function Profile() {
-  const [profile, setProfile] = useState<ProfileProps>()
-
-  useEffect(() => {
-    async function loadData() {
-      const { data } = await api.get('/users/jrbytes')
-      setTimeout(() => {
-        setProfile(data)
-      }, 1000)
-    }
-    loadData()
-  }, [])
+  const { profile } = useContext(GithubContext)
 
   return (
     <S.Container>
