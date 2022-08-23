@@ -17,8 +17,17 @@ type ProfileProps = {
   followers: number
 }
 
+export type IssuesProps = {
+  number: number
+  title: string
+  body: string
+  comments: number
+  created_at: string
+}
+
 interface GithubContextType {
   profile: ProfileProps | null
+  issues: IssuesProps[]
 }
 
 interface GithubProviderProps {
@@ -29,18 +38,21 @@ export const GithubContext = createContext({} as GithubContextType)
 
 export function GithubProvider({ children }: GithubProviderProps) {
   const [profile, setProfile] = useState<ProfileProps>({} as ProfileProps)
+  const [issues, setIssues] = useState<IssuesProps[]>([])
 
-  const loadProfile = useCallback(async () => {
-    const { data } = await api.get('/users/jrbytes')
-    setProfile(data)
+  const loadData = useCallback(async () => {
+    const profile = await api.get('/users/jrbytes')
+    setProfile(profile.data)
+    const issues = await api.get('/repos/jrbytes/03-github-blog/issues')
+    setIssues(issues.data)
   }, [])
 
   useEffect(() => {
-    loadProfile()
-  }, [loadProfile])
+    loadData()
+  }, [loadData])
 
   return (
-    <GithubContext.Provider value={{ profile }}>
+    <GithubContext.Provider value={{ profile, issues }}>
       {children}
     </GithubContext.Provider>
   )
