@@ -8,5 +8,12 @@ export const Posts = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+
+    div {
+      img,
+      code {
+        display: none;
+      }
+    }
   `}
 `
