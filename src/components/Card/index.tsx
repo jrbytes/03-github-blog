@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown'
 import { differenceInDays } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
 import * as S from './styles'
-import { IssuesProps } from '../../pages/Home'
+import { IssuesProps } from '../../contexts/GithubContext'
 
 export interface CardProps {
   issue: IssuesProps
