@@ -34,5 +34,13 @@ export const Content = styled.div`
       text-align: center;
       margin: ${theme.spacings.medium} 0;
     }
+
+    @media (max-width: ${theme.content.width}) {
+      width: 100%;
+
+      pre {
+        overflow-x: auto;
+      }
+    }
   `}
 `

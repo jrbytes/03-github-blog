@@ -57,5 +57,15 @@ export const Header = styled.div`
         }
       }
     }
+
+    @media (max-width: ${theme.content.width}) {
+      width: 100%;
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: ${theme.spacings.xsmall};
+      }
+    }
   `}
 `
