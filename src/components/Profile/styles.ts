@@ -7,6 +7,10 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: ${theme.content.width}) {
+      padding: 0 ${theme.spacings.small};
+    }
   `}
 `
 
@@ -25,14 +29,23 @@ export const Wrapper = styled.div`
       height: 148px;
       border-radius: ${theme.borderRadius.large};
     }
+
+    @media (max-width: ${theme.content.width}) {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: ${theme.spacings.xsmall};
+    }
   `}
 `
 
 export const Info = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: ${theme.spacings.xsmall};
 
     header {
       display: flex;
@@ -56,6 +69,7 @@ export const Info = styled.div`
     section {
       font-size: ${theme.font.sizes.small};
       color: ${theme.colors.text};
+      flex-grow: 1;
     }
 
     footer {
@@ -72,6 +86,14 @@ export const Info = styled.div`
         svg {
           color: ${theme.colors.label};
         }
+      }
+    }
+
+    @media (max-width: ${theme.content.width}) {
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: ${theme.spacings.xsmall};
       }
     }
   `}
