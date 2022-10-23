@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
-  margin-top: -80px;
+  ${({ theme }) => css`
+    margin-top: -80px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `}
 `
 
 export const Wrapper = styled.div`

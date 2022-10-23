@@ -21,5 +21,15 @@ export const Header = styled.header`
       margin-top: 64px;
       height: 98px;
     }
+
+    @media (max-width: ${theme.content.width}) {
+      background: url(${effectLeft}) left center no-repeat,
+        linear-gradient(
+          to bottom,
+          ${theme.colors.background},
+          ${theme.colors.profile}
+        );
+      height: 296px;
+    }
   `}
 `
