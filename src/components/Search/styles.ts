@@ -11,6 +11,11 @@ export const Container = styled.div`
     margin-top: ${theme.grid.gutter};
     margin-left: auto;
     margin-right: auto;
+
+    @media (max-width: ${theme.content.width}) {
+      width: 100%;
+      padding: 0 ${theme.spacings.small};
+    }
   `}
 `
 
@@ -18,6 +23,7 @@ export const Header = styled.header`
   ${({ theme }) => css`
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     font-size: ${theme.font.sizes.large};
